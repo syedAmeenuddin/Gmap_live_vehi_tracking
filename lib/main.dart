@@ -13,6 +13,7 @@ void main() async {
         )
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         routes: myroutes,
         initialRoute: nav.home,
         theme: ThemeData.dark(),
