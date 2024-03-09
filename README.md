@@ -1,7 +1,3 @@
-Sure, here's a template for your README.md file for your Flutter Google Maps app:
-
----
-
 # Flutter Google Maps Navigation App
 
 This Flutter app allows users to select a destination and navigate to it using Google Maps. It provides a simple and intuitive interface for users to input their desired destination and get turn-by-turn directions.
