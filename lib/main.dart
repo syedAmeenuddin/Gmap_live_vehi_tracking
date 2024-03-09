@@ -1,4 +1,5 @@
 import 'package:vechtrackapp/constant/kimports.dart';
+import 'package:vechtrackapp/repo/Services/getlocalpermission.dart';
 
 void main() async {
   prefuncs();
@@ -36,29 +37,14 @@ class _MyAppState extends State<MyApp> {
 
   void checkinfo() {
     WidgetsBinding.instance.addPostFrameCallback((dur) async {
-      Location location = Location();
-      bool serviceenable = await location.serviceEnabled();
-      if (serviceenable == false) {
-        await location.requestService();
-        await location.requestPermission();
-      }
-
-      if (serviceenable) {
-        PermissionStatus permissionstatus = await location.hasPermission();
-        if (permissionstatus == PermissionStatus.granted) {
-          Navigator.pushReplacementNamed(context, nav.HomePage);
-        }
-      } else {
-        if (serviceenable) {
-          Navigator.pushReplacementNamed(context, nav.HomePage);
-        } else {
-          return;
-        }
+      if (await getlocalpermission().getpermissions()) {
+        Navigator.pushReplacementNamed(context, nav.HomePage);
       }
     });
   }
 
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Kloader(),
